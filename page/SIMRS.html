@@ -49,8 +49,8 @@
                     <!-- My photo -->
                     <div class="sidebar__base-info">
                         <figure class="avatar-box">
-                            <img src="../assets/images/K0217011600516.jpg" alt="Ricardo Black" />
-                        </figure>
+                            <img src="../assets/images/profil.png" alt="Rahmat Priyadi" />
+                          </figure>
 
                         <div class="text-xl-center">
                             <h3 class="title title--h3 sidebar__name">Rahmat Priyadi</h3>
@@ -113,6 +113,11 @@
                                     class="feathericon-instagram"></i></a>
                         </div>
                     </div>
+                    <div class="text-xl-center mt-3">
+						<a href="#" type="submit" class="btn btn--small ">
+						  <i class="font-icon icon-send"></i> Download CV
+						</a>
+					  </div>
                 </div>
             </aside>
 
@@ -141,17 +146,24 @@
                                     <div class="swiper-wrapper project-gallery">
                                         <!-- Item -->
                                         <figure class="swiper-slide swiper-slide-project">
-                                            <a title="click to zoom-in" href="../assets/images/projects/wa1.png"
+                                            <a title="click to zoom-in" href="../assets/images/portfolio/login.png"
                                                 data-size="1920x1080">
-                                                <img class="lazyload" src="../assets/images/projects/wa1.png" alt="" />
+                                                <img class="lazyload" src="../assets/images/portfolio/login.png" alt="" />
                                             </a>
                                         </figure>
 
                                         <!-- Item -->
                                         <figure class="swiper-slide swiper-slide-project">
                                             <a id="first" title="click to zoom-in"
-                                                href="../assets/images/projects/sm2.png" data-size="1920x1080">
-                                                <img class="lazyload" src="../assets/images/projects/sm2.png" alt="" />
+                                                href="../assets/images/portfolio/app1.png" data-size="1920x1080">
+                                                <img class="lazyload" src="../assets/images/portfolio/app1.png" alt="" />
+                                            </a>
+                                        </figure>
+                                        <!-- Item -->
+                                        <figure class="swiper-slide swiper-slide-project">
+                                            <a id="first" title="click to zoom-in"
+                                                href="../assets/images/portfolio/app1.1.png" data-size="1920x1080">
+                                                <img class="lazyload" src="../assets/images/portfolio/app1.1.png" alt="" />
                                             </a>
                                         </figure>
 
@@ -162,15 +174,10 @@
                                 <div class="entry-content mt-3">
                                     <h2 class="bebas">Project Overview</h2>
                                     <p class="mb-3" align="justify">
-                                    <h6 class="bebas">Nama Proyek : </h6>Buku Besar </p>
+                                    <h6 class="bebas">Nama Proyek : </h6>Sistem Informasi Manajemen Rumah Sakit </p>
                                     <h6 class="bebas mt-2">Tujuan Utama :</h6>
                                     <p class="mt-1" align="justify">Tujuan utama dari proyek ini adalah mengembangkan
-                                        sebuah web Application yang modern dan menarik secara visual untuk
-                                        Perusahaan. Website ini bertujuan menjadi representasi daring komprehensif
-                                        perusahaan, memberikan pengguna informasi penting tentang Data proyek, perolehan selama proyek, tim,
-                                        dan dan biaya marketing perusahaan serta buku kas harian. Website akan berfungsi sebagai pintu masuk digital,
-                                        menciptakan kesan positif dan informatif bagi klien, mitra, dan
-                                        pemangku kepentingan.</p>
+                                        sebuah web Application yang modern untuk mempermudah pengelolaan data di suatu rumah sakit</p>
                                 </div>
                             </div>
                         </div>
@@ -186,26 +193,24 @@
                                         Fitur Utama:
                                     </h5>
                                     <ul class="list-unstyled" align="justify">
-                                        <li type="disc">Beranda:</li>
+                                        <li type="disc">Data Dokter:</li>
 
-                                        Bagian utama yang menarik dengan pengantar singkat tentang perusahaan.
-                                        Navigasi yang jelas ke bagian utama website.
-                                        Grafis atau animasi yang dinamis dan menarik.
+                                        Berisi informasi tentang data dokter
 
-                                        <li type="disc">Data Proyek:</li>
+                                        <li type="disc">Jadwal Dokter:</li>
 
-                                        Informasi mengenai nama proyek yang sedang di kerjakan serta lokasi proyek berada.
+                                        Informasi mengenai Jam kerja dari dokter di rumah sakit.
 
-                                        <li type="disc">perolehan Proyek:</li>
+                                        <li type="disc">Data Pasien:</li>
 
-                                        Berisi tentang informasi detai transaksi proyek dan biaya proyek
+                                        Berisi tentang informasi detai pasien
 
-                                        <li type="disc">Biaya marketing:</li>
+                                        <li type="disc">Data tempat tidur:</li>
 
-                                        Berisi tentang informasi detai transaksi proyek dan biaya marketing proyek
+                                        Berisi tentang informasi detai tempat tidur / ruangan yang sedang digunakan mau pun yang belum di gunakan oleh pasien
 
-                                        <li type="disc">Buku kas harian:</li>
-                                        Berisi tentang informasi detai transaksi proyek secara harian
+                                        <li type="disc">Data Obat:</li>
+                                        Berisi tentang informasi detai data obat dan stok nya di rumah sakit tersebut
                                     </ul>
                                     <div class="aside-item-portfolio">
                                         <ul class="list-unstyled">
@@ -215,7 +220,7 @@
                                             </li>
                                             <li>
                                                 <span class="bebas">Client :</span>
-                                                <span>SAMAKOPI</span>
+                                                <span>#</span>
                                             </li>
                                             <li>
                                                 <span class="bebas">Date :</span>
@@ -242,7 +247,64 @@
 </main>
 
 <div class="back-to-top"></div>
-
+    <!-- PhotoSwipe -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+  
+        <div class="pswp__scroll-wrap">
+          <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+          </div>
+  
+          <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+              <div class="pswp__counter"></div>
+              <button
+                class="pswp__button pswp__button--close"
+                title="Close (Esc)"
+              ></button>
+              <button
+                class="pswp__button pswp__button--fs"
+                title="Toggle fullscreen"
+              ></button>
+              <button
+                class="pswp__button pswp__button--zoom"
+                title="Zoom in/out"
+              ></button>
+  
+              <div class="pswp__preloader">
+                <div class="pswp__preloader__icn">
+                  <div class="pswp__preloader__cut">
+                    <div class="pswp__preloader__donut"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div
+              class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"
+            >
+              <div class="pswp__share-tooltip"></div>
+            </div>
+  
+            <button
+              class="pswp__button pswp__button--arrow--left"
+              title="Previous (arrow left)"
+            ></button>
+            <button
+              class="pswp__button pswp__button--arrow--right"
+              title="Next (arrow right)"
+            ></button>
+  
+            <div class="pswp__caption">
+              <div class="pswp__caption__center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
 <!-- JavaScripts -->
 <script src="../assets/js/jquery-3.4.1.min.js"></script>
 <script src="../assets/js/plugins.min.js"></script>
