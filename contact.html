@@ -151,7 +151,7 @@
             <div class="map" id="map"></div>
             <h2 class="title title--h2">Contact Form</h2>
 
-            <form id="contact-form" class="contact-form" data-toggle="validator" netlify>
+            <form id="contact-form" class="contact-form" name="RP-Contact-Form" data-toggle="validator" netlify>
               <div class="row">
                 <div class="form-group col-12 col-md-6">
                   <input type="text" class="input form-control" id="nameContact" name="nameContact"
@@ -171,9 +171,6 @@
                     oninvalid="setCustomValidity('Fill in the field')" onkeyup="setCustomValidity('')"></textarea>
                   <div class="help-block with-errors"></div>
                 </div>
-                <p style="color: red;">Mohon maaf untuk fungsi contact nya belum bisa di gunakan, jika ada hal yang
-                  ingin di
-                  tanyakan bisa mengklik email saya atau nomer handphone saya terimakasih</p>
               </div>
 
               <div class="row">
@@ -207,6 +204,18 @@
 
   <!-- Mapbox init -->
   <script src="assets/js/mapbox.init.js"></script>
+  <!-- <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFQ9EonU9sDozpR0t6cLSfJGGs9_glGcKyc4NqXq2BcQ0-Vxxby60BAqOyJ53qx3Hk/exec'
+    const form = document.forms['RP-Contact-Form']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks! Your message has been sent."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script> -->
+
 </body>
 
 </html>

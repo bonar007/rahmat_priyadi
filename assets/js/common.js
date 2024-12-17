@@ -449,57 +449,75 @@ $(document).ready(function() {
     -------------------------------------------------------------------*/
 
     $("#contact-form").validator().on("submit", function (event) {
-        if (event.isDefaultPrevented()) {
-            formError();
-            submitMSG(false, "Please fill in the form...");
-        } else {
-            event.preventDefault();
-            submitForm();
-        }
-    });
+      if (event.isDefaultPrevented()) {
+          formError();
+          submitMSG(false, "Please fill in the form...");
+      } else {
+          event.preventDefault();
+          submitForm();
+      }
+  });
+  
+  function submitForm() {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFQ9EonU9sDozpR0t6cLSfJGGs9_glGcKyc4NqXq2BcQ0-Vxxby60BAqOyJ53qx3Hk/exec';
+    const form = document.forms['RP-Contact-Form'];
 
-    function submitForm(){
-        var name = $("#nameContact").val(),
-            email = $("#emailContact").val(),
-            message = $("#messageContact").val();
-			
-        var url = "assets/php/form-contact.php";
-		
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: "name=" + name + "&email=" + email + "&message=" + message,
-            success : function(text){
-                if (text == "success"){
-                    formSuccess();
-                } else {
-                    formError();
-                    submitMSG(false,text);
-                }
+    fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text(); // Mengambil response sebagai teks
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(text => {
+        // Periksa apakah respons adalah JSON
+        try {
+            const data = JSON.parse(text);
+            if (data.result === "success") {
+                formSuccess();
+            } else {
+                formError();
+                submitMSG(false, data.message || "An error occurred.");
             }
-        });
-    }
-
-    function formSuccess(){
-        $("#contact-form")[0].reset();
-        submitMSG(true, "Thanks! Your message has been sent.");
-    }
-  
-    function formError(){
-        $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            $(this).removeClass();
-        });
-    }  
-  
-    function submitMSG(valid, msg){
-		var msgClasses;
-        if(valid){
-            msgClasses = "validation-success";
-        } else {
-           msgClasses = "validation-danger";
+        } catch (e) {
+            // Jika tidak bisa di-parse, anggap sebagai teks biasa
+            if (text === "success") {
+                formSuccess();
+            } else {
+                formError();
+                submitMSG(false, text);
+            }
         }
-        $("#validator-contact").removeClass().addClass(msgClasses).text(msg);
-    }
+    })
+    .catch(error => {
+        formError();
+        submitMSG(false, error.message);
+    });
+}
+  
+  function formSuccess() {
+      $("#contact-form")[0].reset();
+      submitMSG(true, "Terimakasih! Pesan Anda sudah terkirim");
+  }
+  
+  function formError() {
+      $("#contact-form").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+          $(this).removeClass();
+      });
+  }
+  
+  function submitMSG(valid, msg) {
+      var msgClasses;
+      if (valid) {
+          msgClasses = "validation-success";
+      } else {
+          msgClasses = "validation-danger";
+      }
+      $("#validator-contact").removeClass().addClass(msgClasses).text(msg);
+  }
 
 
     /*-----------------------------------------------------------------
