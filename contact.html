@@ -152,12 +152,13 @@
             <div class="map" id="map"></div>
             <h2 class="title title--h2">Contact Form</h2>
 
-            <form action="contact-form.php" method="POST" class="contact-form" name="RP-Contact-Form" data-toggle="validator" netlify>
+            <form id="contactForm" action="" method="POST" class="contact-form" name="RP-Contact-Form"
+              data-toggle="validator" netlify>
               <div class="row">
                 <div class="form-group col-12 col-md-6">
-                  <input type="text" class="input form-control" id="nameContact" name="name"
-                    placeholder="Full name" required="required" autocomplete="on"
-                    oninvalid="setCustomValidity('Fill in the field')" onkeyup="setCustomValidity('')" />
+                  <input type="text" class="input form-control" id="nameContact" name="name" placeholder="Full name"
+                    required="required" autocomplete="on" oninvalid="setCustomValidity('Fill in the field')"
+                    onkeyup="setCustomValidity('')" />
                   <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group col-12 col-md-6">
@@ -167,9 +168,9 @@
                   <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group col-12 col-md-12">
-                  <textarea class="textarea form-control" id="messageContact" name="message"
-                    placeholder="Your Message" rows="4" required="required"
-                    oninvalid="setCustomValidity('Fill in the field')" onkeyup="setCustomValidity('')"></textarea>
+                  <textarea class="textarea form-control" id="messageContact" name="message" placeholder="Your Message"
+                    rows="4" required="required" oninvalid="setCustomValidity('Fill in the field')"
+                    onkeyup="setCustomValidity('')"></textarea>
                   <div class="help-block with-errors"></div>
                 </div>
               </div>
@@ -205,6 +206,51 @@
 
   <!-- Mapbox init -->
   <script src="assets/js/mapbox.init.js"></script>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Ganti dengan token bot Anda
+      const token = '8166538633:AAGLeF1hlhJgsCO_g3pTu4iqSMJ6ZSp5Mrw';
+      const chat_id = '6774841698';
+
+      const name = this.name.value;
+      const email = this.email.value;
+      const message = this.message.value;
+
+      const text = `
+📬 Pesan dari Website Portofolio:
+👤 Nama: ${name}
+📧 Email: ${email}
+💬 Pesan: ${message}
+    `;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chat_id,
+          text: text
+        })
+      })
+        .then(response => {
+          if (response.ok) {
+            document.getElementById("statusMessage").innerText = "Pesan berhasil dikirim!";
+            document.getElementById("contactForm").reset();
+          } else {
+            document.getElementById("statusMessage").innerText = "Gagal mengirim pesan.";
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          document.getElementById("statusMessage").innerText = "Terjadi kesalahan.";
+        });
+    });
+  </script>
+
 
   <!-- <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwFQ9EonU9sDozpR0t6cLSfJGGs9_glGcKyc4NqXq2BcQ0-Vxxby60BAqOyJ53qx3Hk/exec'
